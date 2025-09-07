@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { readContract } from 'wagmi/actions';
+import { readContract } from '@wagmi/core';
 import abi from "../../helper/ManagerFaucetAbi.json";
 import { daimond, priceInDollar, routers } from '../../helper/Helper';
 import TokenAbi from '../../helper/TokenAbi.json';

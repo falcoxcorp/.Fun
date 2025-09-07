@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { config } from '../../wagmiClient';
-import { readContract } from 'wagmi/actions';
+import { readContract } from '@wagmi/core';
 import { daimond } from '../../helper/Helper';
 import MangerAbi from "../../helper/ManagerFaucetAbi.json";
 import { useContractRead, useContractWrite } from 'wagmi';

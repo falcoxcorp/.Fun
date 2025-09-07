@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { readContract } from 'wagmi/actions';
+import { readContract } from '@wagmi/core';
 import { config } from '../../wagmiClient';
 import Card from '../Card/Card';
 import abi from "../../helper/ManagerFaucetAbi.json";

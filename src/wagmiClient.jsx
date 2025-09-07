@@ -4,7 +4,7 @@ import {
   metaMaskWallet,
   walletConnectWallet,
 } from '@rainbow-me/rainbowkit/wallets';
-import { configureChains, createConfig } from 'wagmi';
+import { configureChains, createClient } from 'wagmi';
 import { publicProvider } from 'wagmi/providers/public';
 import { coreDao } from 'wagmi/chains';
 
@@ -24,7 +24,7 @@ const connectors = connectorsForWallets([
   },
 ]);
 
-export const config = createConfig({
+export const config = createClient({
   autoConnect: true,
   connectors,
   publicClient,

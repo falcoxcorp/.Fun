@@ -2,7 +2,7 @@ import { Navigate, Outlet } from "react-router-dom";
 import { useAccount } from "wagmi";
 import { daimond } from "../../helper/Helper";
 import { useEffect, useState } from "react";
-import { readContract } from "wagmi/actions";
+import { readContract } from "@wagmi/core";
 import { config } from "../../wagmiClient";
 import MangerAbi from "../../helper/ManagerFaucetAbi.json";
 
