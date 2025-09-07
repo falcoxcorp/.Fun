@@ -1,4 +1,4 @@
-import { getDefaultConfig } from '@rainbow-me/rainbowkit';
+import { getDefaultConfig } from '@rainbow-me/rainbowkit/config';
 import { http } from 'wagmi';
 import {bscTestnet, coreDao, soneium} from 'wagmi/chains';
 
