@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { formatUnits } from 'ethers';
 import { useAccount, useBalance, useContractRead, useContractWrite } from 'wagmi';
-import { readContract, waitForTransactionReceipt, writeContract } from 'wagmi/actions';
+import { readContract, writeContract } from 'wagmi/actions';
+import { waitForTransactionReceipt } from '@wagmi/core';
 import { config } from '../../wagmiClient';
 import { daimond } from '../../helper/Helper';
 import DegenFacetabi from "../../helper/DegenFacetAbi.json";
