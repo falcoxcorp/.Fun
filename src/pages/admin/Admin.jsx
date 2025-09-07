@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { config } from '../../wagmiClient';
 import { readContract } from 'wagmi/actions';
-import { waitForTransactionReceipt } from '@wagmi/core';
 import { daimond } from '../../helper/Helper';
 import MangerAbi from "../../helper/ManagerFaucetAbi.json";
 import { useContractRead, useContractWrite } from 'wagmi';
@@ -80,11 +79,8 @@ const Admin = () => {
                     true,
                 ],
             });
-            const receipt = await waitForTransactionReceipt(config, {
-                hash: tx,
-            });
 
-            if (receipt && receipt.status === 'success') {
+            if (tx) {
                 window.location.reload();
             } else {
                 alert("Transaction failed!");
@@ -113,11 +109,7 @@ const Admin = () => {
                 args: [newAdmin],
             });
 
-            const receipt = await waitForTransactionReceipt(config, {
-                hash: tx,
-            });
-
-            if (receipt && receipt.status === 'success') {
+            if (tx) {
                 window.location.reload();
             } else {
                 alert("Transaction failed!");
@@ -150,11 +142,7 @@ const Admin = () => {
                 ],
             });
 
-            const receipt = await waitForTransactionReceipt(config, {
-                hash: tx,
-            });
-
-            if (receipt && receipt.status === 'success') {
+            if (tx) {
                 window.location.reload();
             } else {
                 alert("Transaction failed!");
@@ -176,13 +164,7 @@ const Admin = () => {
                 args: [!data],
             });
 
-            // Wait for the transaction receipt to confirm it was mined
-            const receipt = await waitForTransactionReceipt(config, {
-                hash: tx,
-            });
-
-            // Check if the receipt is successful before reloading
-            if (receipt && receipt.status === 'success') {
+            if (tx) {
                 window.location.reload();
             } else {
                 alert("Transaction failed!");
@@ -204,12 +186,7 @@ const Admin = () => {
                 args: [updatedMasterConfig.weth, updatedMasterConfig.feeReceiver, updatedMasterConfig.feeBps * 100, updatedMasterConfig.refBps * 100],
             });
 
-            // Wait for the transaction receipt to confirm it was mined
-            const receipt = await waitForTransactionReceipt(config, {
-                hash: tx,
-            });
-
-            if (receipt && receipt.status === 'success') {
+            if (tx) {
                 window.location.reload();
             } else {
                 alert("Transaction failed!");
@@ -233,11 +210,7 @@ const Admin = () => {
                 args: [updatedPoolConfig.index, updatedPoolConfig],
             });
 
-            const receipt = await waitForTransactionReceipt(config, {
-                hash: tx,
-            });
-
-            if (receipt && receipt.status === 'success') {
+            if (tx) {
                 window.location.reload();
             } else {
                 alert("Transaction failed!");

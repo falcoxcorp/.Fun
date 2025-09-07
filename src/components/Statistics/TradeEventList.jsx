@@ -1,5 +1,4 @@
 import { useAccount, usePublicClient } from 'wagmi';
-import { getBlockNumber } from '@wagmi/core'
 
 // ABI fragment for the Trade event
 const tradeEventAbi = {
@@ -24,7 +23,7 @@ export function useTradeEvents(contractAddress) {
 
   const fetchEvents = async () => {
 
-    const blockNumber = await getBlockNumber(config)
+    const blockNumber = await publicClient.getBlockNumber();
     const logs = await publicClient.getLogs({
       address: contractAddress,
       event: tradeEventAbi, // Use the correct ABI here
