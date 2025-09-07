@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useAccount, useWriteContract } from 'wagmi';
+import { useAccount, useContractWrite } from 'wagmi';
 import { daimond, routers, tags } from '../../helper/Helper';
 import degenFacetAbi from "../../helper/DegenFacetAbi.json";
 import { waitForTransactionReceipt } from 'wagmi/actions';
@@ -142,7 +142,7 @@ const GlowingBorder = ({ children, color = "purple" }) => {
 const CreateToken = () => {
   const { chain, address } = useAccount();
   const routerAddresses = routers[chain?.id] || [];
-  const { writeContractAsync, isPending, isSuccess } = useWriteContract();
+  const { writeAsync: writeContractAsync, isLoading: isPending, isSuccess } = useContractWrite();
 
   // Estado unificado para evitar múltiples rerenders
   const [formData, setFormData] = useState({

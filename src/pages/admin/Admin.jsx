@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { config } from '../../wagmiClient';
-import { readContract, waitForTransactionReceipt, writeContract } from 'wagmi/actions';
+import { readContract, waitForTransactionReceipt } from 'wagmi/actions';
 import { daimond } from '../../helper/Helper';
 import MangerAbi from "../../helper/ManagerFaucetAbi.json";
-import { useContractRead } from 'wagmi';
+import { useContractRead, useContractWrite } from 'wagmi';
 
 const Admin = () => {
+    const { writeAsync: writeContractAsync } = useContractWrite();
     const [routerName, setRouterName] = useState('');
     const [routerId, setRouterId] = useState('');
     const [tokenAddress, setTokenAddress] = useState('');

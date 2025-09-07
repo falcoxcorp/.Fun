@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { formatUnits } from 'ethers';
-import { useAccount, useBalance, useContractRead } from 'wagmi';
+import { useAccount, useBalance, useContractRead, useContractWrite } from 'wagmi';
 import { readContract, waitForTransactionReceipt, writeContract } from 'wagmi/actions';
 import { config } from '../../wagmiClient';
 import { daimond } from '../../helper/Helper';
@@ -10,6 +10,7 @@ import TokenABi from "../../helper/TokenAbi.json"
 const BuySell = ({ data, token, tokenBalance, reserve }) => {
 
     const { chain } = useAccount();
+    const { writeAsync: writeContractAsync } = useContractWrite();
     const { data: balance } = useBalance()
     const [amount, setAmount] = useState(0);
     const [timeLeft, setTimeLeft] = useState(0);
@@ -70,7 +71,7 @@ const BuySell = ({ data, token, tokenBalance, reserve }) => {
         if (!token || !amount) return;
 
         try {
-            const data = await writeContract(config, {
+            const data = await writeContractAsync({
 
                 address: daimond[1116],
                 abi: DegenFacetabi,
@@ -99,7 +100,7 @@ const BuySell = ({ data, token, tokenBalance, reserve }) => {
         if (!token || !amount) return;
 
         try {
-            const data = await writeContract(config, {
+            const data = await writeContractAsync({
                 address: token,
                 abi: TokenABi,
                 functionName: 'approve',
@@ -121,7 +122,7 @@ const BuySell = ({ data, token, tokenBalance, reserve }) => {
     const handleSell = async () => {
         if (!token || !approve) return;
         try {
-            const data = await writeContract(config, {
+            const data = await writeContractAsync({
                 address: daimond[1116],
                 abi: DegenFacetabi,
                 functionName: 'sell',
