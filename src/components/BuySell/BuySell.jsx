@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useAccount, useContractWrite } from 'wagmi';
 import { daimond, routers, tags } from '../../helper/Helper';
 import degenFacetAbi from "../../helper/DegenFacetAbi.json";
-import { waitForTransactionReceipt } from 'wagmi/actions';
+import { waitForTransactionReceipt } from '@wagmi/core';
 import { useNavigate } from 'react-router-dom';
 import { config } from '../../wagmiClient';
 import { motion, AnimatePresence } from 'framer-motion';
