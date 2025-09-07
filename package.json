@@ -12,7 +12,9 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "install:clean": "rm -rf node_modules package-lock.json && npm install",
+    "start": "npm run dev"
   },
   "dependencies": {
     "@rainbow-me/rainbowkit": "^1.3.0",
