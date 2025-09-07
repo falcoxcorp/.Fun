@@ -3,7 +3,7 @@ import { config } from '../../wagmiClient';
 import { readContract, waitForTransactionReceipt, writeContract } from 'wagmi/actions';
 import { daimond } from '../../helper/Helper';
 import MangerAbi from "../../helper/ManagerFaucetAbi.json";
-import { useReadContract } from 'wagmi';
+import { useContractRead } from 'wagmi';
 
 const Admin = () => {
     const [routerName, setRouterName] = useState('');
@@ -246,7 +246,7 @@ const Admin = () => {
         }
     };
 
-    const { data, error, isLoading } = useReadContract({
+    const { data, error, isLoading } = useContractRead({
         abi: MangerAbi,
         address: daimond[1116],
         functionName: 'isPaused',

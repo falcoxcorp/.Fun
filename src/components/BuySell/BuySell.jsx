@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { formatUnits } from 'ethers';
-import { useAccount, useBalance, useReadContract } from 'wagmi';
+import { useAccount, useBalance, useContractRead } from 'wagmi';
 import { readContract, waitForTransactionReceipt, writeContract } from 'wagmi/actions';
 import { config } from '../../wagmiClient';
 import { daimond } from '../../helper/Helper';

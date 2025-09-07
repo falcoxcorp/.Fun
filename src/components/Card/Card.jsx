@@ -1,5 +1,5 @@
 import React from 'react';
-import { useAccount, useReadContract } from 'wagmi';
+import { useAccount, useContractRead } from 'wagmi';
 import abi from "../../helper/ManagerFaucetAbi.json";
 import { daimond, priceInDollar } from '../../helper/Helper';
 import { useNavigate } from 'react-router-dom';
@@ -13,7 +13,7 @@ const Card = ({ id, reserve, activeTable }) => {
   //   return;
   // }
 
-  const { data, error, isLoading } = useReadContract({
+  const { data, error, isLoading } = useContractRead({
     abi,
     address: daimond[1116],
     functionName: 'getPoolAt',

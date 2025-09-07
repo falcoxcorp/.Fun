@@ -4,7 +4,7 @@ import { readContract } from 'wagmi/actions';
 import abi from "../../helper/ManagerFaucetAbi.json";
 import { daimond, priceInDollar, routers } from '../../helper/Helper';
 import TokenAbi from '../../helper/TokenAbi.json';
-import { useAccount, useReadContract, useReadContracts } from 'wagmi';
+import { useAccount, useBalance, useContractRead, useContractReads } from 'wagmi';
 import logo from "../../assets/logo/logo.png";
 import TradeEventList from '../../components/Statistics/TradeEventList';
 import { config } from '../../wagmiClient';
@@ -23,7 +23,7 @@ const CardPage = () => {
     return <div className="flex justify-center items-center h-screen text-white">Card not found</div>;
   }
 
-  const { data, error, isLoading } = useReadContracts({
+  const { data, error, isLoading } = useContractReads({
     contracts: [{
       abi,
       address: daimond[1116],

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { readContracts } from 'wagmi/actions';
+import { readContract } from 'wagmi/actions';
 import { config } from '../../wagmiClient';
 import Card from '../Card/Card';
 import abi from "../../helper/ManagerFaucetAbi.json";
@@ -16,23 +16,23 @@ const CardList = ({ activeTable }) => {
     const fetchPoolCount = async () => {
       try {
         setIsLoading(true);
-        const result = await readContracts(config, {
-          contracts: [{
-            address: daimond[1116],
-            abi,
-            functionName: 'getPoolCount',
-            chainId: 1116
-          }, {
-            abi,
-            address: daimond[1116],
-            functionName: 'getPoolConfig',
-            args: [20],
-            chainId: 1116
-          }]
+        const poolCountResult = await readContract(config, {
+          address: daimond[1116],
+          abi,
+          functionName: 'getPoolCount',
+          chainId: 1116
         });
         
-        setTotalTokens(result[0].result.toString());
-        setReserve(result[1].result);
+        const poolConfigResult = await readContract(config, {
+          abi,
+          address: daimond[1116],
+          functionName: 'getPoolConfig',
+          args: [20],
+          chainId: 1116
+        });
+        
+        setTotalTokens(poolCountResult.toString());
+        setReserve(poolConfigResult);
       } catch (error) {
         console.error("Error fetching pool count:", error);
         setError(error.message);
