@@ -16,7 +16,7 @@ createRoot(document.getElementById('root')).render(
   <StrictMode>
     <WagmiConfig config={config}>
       <QueryClientProvider client={queryClient}>
-        <RainbowKitProvider modalSize="compact" initialChain={56} showRecentTransactions={true}>
+        <RainbowKitProvider modalSize="compact" initialChain={1116} showRecentTransactions={true}>
           <App />
         </RainbowKitProvider>
       </QueryClientProvider>
